@@ -11,7 +11,7 @@ def index():
         return f"Температура в городе: {weather['temp_C']} градуса Цельсия (ощущается как {weather['FeelsLikeC']})"
     else:
         return "Сервис погоды временно не доступен"
-
+#1
 
 if __name__ == '__main__':
     app.run(debug=True)
