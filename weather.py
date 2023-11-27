@@ -1,5 +1,5 @@
 import requests
-#1
+
 
 def weather_by_city(city_name):
     weather_url = 'http://api.worldweatheronline.com/premium/v1/weather.ashx'
@@ -21,5 +21,8 @@ def weather_by_city(city_name):
                 return False
     return False
 
+
 if __name__ == '__main__':
     print(weather_by_city('Moscow,Russia'))
+
+    #изменение
