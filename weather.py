@@ -11,14 +11,19 @@ def weather_by_city(city_name):
         'showlocaltime': 'yes',
         'lang': 'ru'
     }
-    result = requests.get(weather_url, params=param)
-    weather = result.json()
-    if 'data' in weather:
-        if 'current_condition' in weather['data']:
-            try:
-                return weather['data']['current_condition'][0]
-            except(IndexError, TypeError):
-                return False
+    try:
+        result = requests.get(weather_url, params=param)
+        result.raise_for_status()
+        weather = result.json()
+        if 'data' in weather:
+            if 'current_condition' in weather['data']:
+                try:
+                    return weather['data']['current_condition'][0]
+                except(IndexError, TypeError):
+                    return False
+    except (requests.RequestException) as err:
+        print(f'Сетевая ошибка - {err}')
+        return False
     return False
 
 
