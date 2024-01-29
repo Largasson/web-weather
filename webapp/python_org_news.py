@@ -1,7 +1,8 @@
 from datetime import datetime, date
 import requests
 from bs4 import BeautifulSoup
-from webapp.model import News, db
+from webapp.news.models import News
+from webapp.db import db
 
 
 def get_html(url):
