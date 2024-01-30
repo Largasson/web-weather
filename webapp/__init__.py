@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_login import LoginManager
+from flask_migrate import Migrate
 from webapp.python_org_news import get_python_news
 from webapp.db import db
 from webapp.user.models import User
@@ -13,6 +14,7 @@ def create_app():
     app = Flask(__name__)  # создаем Flask переменную (экземпляр класса Flask) и передаем в нее имя нашего файла
     app.config.from_pyfile('config.py')
     db.init_app(app)
+    migrate = Migrate(app, db)
 
     login_manager = LoginManager()
     login_manager.init_app(app)
